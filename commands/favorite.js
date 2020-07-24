@@ -1,8 +1,7 @@
 exports.run = async (client, msg, args, color) => {
     if (!msg.channel.nsfw)
         return msg.channel
-            .send("NSFW channel please.")
-            .then((msg) => msg.delete({ timeout: 5000 }));
+            .send("NSFW channel please.");
     let nick =
         msg.member.nickname !== null
             ? `${msg.member.nickname}`
@@ -18,12 +17,10 @@ exports.run = async (client, msg, args, color) => {
             return msg.channel
                 .send(
                     `${nick} you have added **${res.title.pretty}** to **Favorite**`
-                )
-                .then((msg) => msg.delete({ timeout: 7000 }));
+                );
         }
         return msg.channel
-            .send(`${nick} this book ID has already in your **Favorite** list`)
-            .then((msg) => msg.delete({ timeout: 7000 }));
+            .send(`${nick} this book ID has already in your **Favorite** list`);
     }
     if (args[0] == "delete") {
         let bookId = args[1];
@@ -32,16 +29,14 @@ exports.run = async (client, msg, args, color) => {
         favorite = favorite.find((x) => x.bookID == bookId);
         if (!favorite) {
             return msg.channel
-                .send(`${nick} you don't have doujin with that ID`)
-                .then((msg) => msg.delete({ timeout: 7000 }));
+                .send(`${nick} you don't have doujin with that ID`);
         }
 
         client.favorite.deleteUserFavoritID(msg.author.id, bookId);
         return msg.channel
             .send(
                 `${nick} your favorite of **${res.title.pretty}** has been deleted from **Favorite**`
-            )
-            .then((msg) => msg.delete({ timeout: 5000 }));
+            );
     }
     if (args[0] == "lookup") {
         try {
@@ -53,8 +48,7 @@ exports.run = async (client, msg, args, color) => {
                 return msg.channel
                     .send(
                         `${member.user.username} don't have any doujin ID yet`
-                    )
-                    .then((msg) => msg.delete({ timeout: 7000 }));
+                    );
             }
         }
     }
@@ -64,8 +58,7 @@ exports.run = async (client, msg, args, color) => {
         } catch (e) {
             if (e.message == "Cannot read property 'title' of undefined") {
                 return msg.channel
-                    .send(`${nick} you don't have any doujin ID yet`)
-                    .then((msg) => msg.delete({ timeout: 7000 }));
+                    .send(`${nick} you don't have any doujin ID yet`);
             }
         }
     }
