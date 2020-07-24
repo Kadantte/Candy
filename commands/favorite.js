@@ -1,7 +1,7 @@
 exports.run = async (client, msg, args, color) => {
     if (!msg.channel.nsfw)
         return msg.channel
-            .send("NSFW channel please.");
+            .send("**NSFW channel please.**");
     let nick =
         msg.member.nickname !== null
             ? `${msg.member.nickname}`

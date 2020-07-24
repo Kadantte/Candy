@@ -10,7 +10,7 @@ const TYPE = {
 exports.run = async (client, msg, args, color) => {
     if (!msg.channel.nsfw)
         return msg.channel
-            .send("NSFW channel please.")
+            .send("**NSFW channel please.**")
             .then((msg) => msg.delete({ timeout: 5000 }));
     const res = await api.g(args[0].toString());
     let nhentURL = `https://mangadl.herokuapp.com/download/nhentai/${res.id}/zip`;
