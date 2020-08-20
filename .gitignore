@@ -106,8 +106,5 @@ dist
 # database folder
 data/
 
-# lock file
-package-lock.json
-
 # config.json file
 config.json
